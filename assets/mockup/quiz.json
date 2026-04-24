@@ -1,0 +1,112 @@
+[
+  {
+    "pergunta": "Qual elemento Tales de Mileto afirmava ser a origem de todas as coisas?",
+    "imagem": "assets/imagens/Q1.jpg",
+    "alternativas": [
+      "Fogo",
+      "Ar",
+      "Terra",
+      "Água"
+    ],
+    "resposta": 3
+  },
+  {
+    "pergunta": "Sobre Sigmund Freud: Como Freud dividiu a estrutura da mente humana?",
+    "imagem": "assets/imagens/Q2.webp",
+    "alternativas": [
+      "Razão, emoção e vontade",
+      "Id, ego e superego",
+      "Corpo, alma e espírito",
+      "Consciência, fala e ação"
+    ],
+    "resposta": 1
+  },
+  {
+    "pergunta": "Sobre o mito da caverna de Platão: O que as sombras na parede da caverna representam?",
+    "imagem": "assets/imagens/Q3.jpg",
+    "alternativas": [
+      "A verdade absoluta",
+      "Os deuses do Olimpo",
+      "A realidade distorcida percebida pelos sentidos",
+      "A liberdade humana"
+    ],
+    "resposta": 2
+  },
+  {
+    "pergunta": "Segundo Sócrates, o que significa a frase 'Só sei que nada sei'?",
+    "imagem": "assets/imagens/Q4.webp",
+    "alternativas": [
+      "Que o ser humano nunca pode aprender nada",
+      "Que o verdadeiro sábio reconhece sua própria ignorância",
+      "Que o conhecimento não tem importância",
+      "Que apenas os deuses possuem conhecimento"
+    ],
+    "resposta": 1
+  },
+  {
+    "pergunta": "Qual é a principal característica da moralidade segundo Kant?",
+    "imagem": "assets/imagens/Q5.jpg",
+    "alternativas": [
+      "É baseada na busca pelo prazer",
+      "É baseada na razão e na universalidade",
+      "É baseada na autoridade da religião",
+      "É baseada na experiência sensível"
+    ],
+    "resposta": 1
+  },
+  {
+    "pergunta": "Qual é a implicação da afirmação de Rousseau de que 'o homem nasce bom, mas a sociedade o corrompe' em relação à natureza humana?",
+    "imagem": "assets/imagens/Q6.jpg",
+    "alternativas": [
+      "Que a natureza humana é fundamentalmente má e precisa ser controlada pela sociedade",
+      "Que a sociedade é a principal fonte de corrupção e que a natureza humana é essencialmente boa",
+      "Que a natureza humana é neutra e que a sociedade não tem influência sobre ela",
+      "Que a corrupção é um resultado inevitável da natureza humana e que a sociedade não pode fazer nada para mudá-la"
+    ],
+    "resposta": 1
+  },
+  {
+    "pergunta": "Maquiavel defende a ideia de que 'os fins justificam os meios'. O que isso significa em relação à moralidade política?",
+    "imagem": "assets/imagens/Q7.webp",
+    "alternativas": [
+      "Que os líderes políticos devem sempre seguir as regras morais",
+      "Que os líderes políticos devem fazer o que é necessário para alcançar seus objetivos, mesmo que isso signifique violar as regras morais",
+      "Que a moralidade é irrelevante para a política",
+      "Que os líderes políticos devem sempre priorizar a justiça e a igualdade"
+    ],
+    "resposta": 1
+  },
+  {
+    "pergunta": "Na obra Vigiar e Punir, Foucault analisa a transição das formas de poder. Qual é a característica central do poder disciplinar descrito por ele?",
+    "imagem": "assets/imagens/Q8.webp",
+    "alternativas": [
+      "Baseia-se na soberania absoluta do rei sobre os súditos",
+      "É exercido por meio da punição pública e espetacular",
+      "Opera através da vigilância, normalização e controle dos corpos no cotidiano",
+      "É fundamentado exclusivamente na religião como forma de dominação"
+    ],
+    "resposta": 2
+  },
+  {
+    "pergunta": "Na obra Leviatã, Hobbes defende que o estado de natureza leva os homens a uma condição de guerra de todos contra todos. Qual é a solução proposta por ele?",
+    "imagem": "assets/imagens/Q9.webp",
+    "alternativas": [
+      "A criação de uma sociedade baseada na igualdade absoluta",
+      "A instituição de um soberano absoluto que garanta a paz e a ordem",
+      "A valorização da religião como guia moral universal",
+      "A defesa da democracia direta como forma de evitar conflitos"
+    ],
+    "resposta": 1
+  },
+  {
+    "pergunta": "Na obra Fenomenologia da Percepção, qual é o núcleo da concepção de Merleau-Ponty sobre o corpo?",
+    "imagem": "assets/imagens/Q10.jpg",
+    "alternativas": [
+      "O corpo é apenas um objeto físico entre outros",
+      "O corpo é uma máquina biológica determinada por leis naturais",
+      "O corpo é sujeito e condição da experiência: não apenas 'temos' um corpo, mas 'somos' corpo, e é através dele que o mundo se revela",
+      "O corpo é irrelevante para a consciência, que existe de forma independente"
+    ],
+    "resposta": 2
+  }
+]
