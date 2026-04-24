@@ -79,35 +79,42 @@ class _HomeState extends State<Home> {
       return Scaffold(
         appBar: AppBar(title: const Text("Resultado")),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/imagens/logo.png',
-                height: 120,
-              ),
-
-              const SizedBox(height: 20),
-
-              Text(
-                "Quiz Finalizado!",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Palette.primary,
+          child: TweenAnimationBuilder(
+            tween: Tween<double>(begin: -200, end: 0),
+            duration: const Duration(seconds: 2),
+            curve: Curves.bounceOut,
+            builder: (context, double value, child) {
+              return Transform.translate(
+                offset: Offset(0, value),
+                child: child,
+              );
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/imagens/logo.png',
+                  height: 120,
                 ),
-              ),
-
-              const SizedBox(height: 15),
-
-              Text(
-                "Pontuação: $pontuacao / ${questoes.length}",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Palette.primary,
+                const SizedBox(height: 20),
+                Text(
+                  "Quiz Finalizado!",
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Palette.primary,
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 15),
+                Text(
+                  "Pontuação: $pontuacao / ${questoes.length}",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Palette.primary,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       );
@@ -127,7 +134,7 @@ class _HomeState extends State<Home> {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Palette.primary, 
+                color: Palette.primary,
               ),
             ),
 
@@ -159,10 +166,7 @@ class _HomeState extends State<Home> {
               child: Text(
                 q['pergunta'],
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Palette.primary, 
-                ),
+                style: TextStyle(color: Palette.primary),
               ),
             ),
 
