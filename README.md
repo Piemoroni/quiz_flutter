@@ -29,5 +29,5 @@ O aplicativo possui interface moderna, com uso de imagens ilustrativas para cada
 
 ## Prints das Telas
 | ![img](assets/imagens/foto1.png) | ![img](assets/imagens/foto2.png) | ![img](assets/imagens/foto3.png) | ![img](assets/imagens/foto4.png) |
-|:-:|:-:|
+|:-:|:-:|:-:|:-:|
 | Questão | Caso Erre | Caso Acerte | Final |
