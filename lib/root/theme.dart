@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'pallet.dart';
 
 class AppTheme {
   static ThemeData get theme {
     return ThemeData(
-      scaffoldBackgroundColor: Palette.background,
+      scaffoldBackgroundColor: const Color(0xFFF5F5F5), 
 
       appBarTheme: const AppBarTheme(
-        backgroundColor: Palette.primary,
+        backgroundColor: Color(0xFF6D5BD0), 
         centerTitle: true,
         elevation: 0,
       ),
@@ -26,7 +25,7 @@ class AppTheme {
 
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Palette.secondary,
+          backgroundColor: const Color(0xFF9C8CE7), 
           foregroundColor: Colors.white,
           elevation: 2,
           shape: RoundedRectangleBorder(

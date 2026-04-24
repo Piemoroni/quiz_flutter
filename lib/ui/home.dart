@@ -1,7 +1,7 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../root/pallet.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -20,10 +20,10 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    carregarJSON();
+    carregarMockupJSON();
   }
 
-  Future<void> carregarJSON() async {
+  Future<void> carregarMockupJSON() async {
     String dados =
         await rootBundle.loadString('assets/mockup/quiz.json');
 
@@ -54,153 +54,147 @@ class _HomeState extends State<Home> {
   }
 
   Color corBotao(int i) {
-    if (!respondeu) return Palette.secondary;
+    if (!respondeu) return const Color(0xFF9C8CE7);
 
     if (i == questoes[indice]['resposta']) {
-      return Palette.correct;
+      return Colors.green;
     }
 
     if (i == selecionada) {
-      return Palette.wrong;
+      return Colors.red;
     }
 
-    return Palette.secondary;
+    return const Color(0xFF9C8CE7);
   }
 
   @override
   Widget build(BuildContext context) {
-    if (questoes.isEmpty) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
-    }
-
-    if (indice >= questoes.length) {
-      return Scaffold(
-        appBar: AppBar(title: const Text("Resultado")),
-        body: Center(
-          child: TweenAnimationBuilder(
-            tween: Tween<double>(begin: -200, end: 0),
-            duration: const Duration(seconds: 2),
-            curve: Curves.bounceOut,
-            builder: (context, double value, child) {
-              return Transform.translate(
-                offset: Offset(0, value),
-                child: child,
-              );
-            },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/imagens/logo.png',
-                  height: 120,
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  "Quiz Finalizado!",
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Palette.primary,
-                  ),
-                ),
-                const SizedBox(height: 15),
-                Text(
-                  "Pontuação: $pontuacao / ${questoes.length}",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Palette.primary,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-    }
-
-    var q = questoes[indice];
-
     return Scaffold(
       appBar: AppBar(title: const Text("Quiz de Filosofia")),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 10),
 
-            Text(
-              "Questão ${indice + 1}",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Palette.primary,
-              ),
-            ),
+      body: questoes.isEmpty
+          ? const Center(child: CircularProgressIndicator())
+          : indice >= questoes.length
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/imagens/logo.png',
+                        height: 120,
+                      ),
 
-            const SizedBox(height: 15),
+                      const SizedBox(height: 20),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
-                height: 200,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey[200],
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.asset(
-                    q['imagem'],
-                    fit: BoxFit.contain,
+                      Text(
+                        "Pontuação: $pontuacao / ${questoes.length}",
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ],
+                  ),
+                )
+              : Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(height: 20),
+
+                      Text(
+                        "Questão ${indice + 1}",
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 40),
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                          boxShadow: const [
+                            BoxShadow(
+                              color: Color(0xFF9C8CE7),
+                              blurRadius: 8,
+                              offset: Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: 180,
+                              height: 180,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.grey[200],
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.asset(
+                                  questoes[indice]['imagem'],
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            ),
+
+                            const SizedBox(height: 15),
+
+                            Text(
+                              questoes[indice]['pergunta'],
+                              textAlign: TextAlign.center,
+                            ),
+
+                            const SizedBox(height: 15),
+
+                            ...List.generate(
+                              questoes[indice]['alternativas'].length,
+                              (i) {
+                                return Container(
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 5),
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: corBotao(i),
+                                    ),
+                                    onPressed: () => responder(i),
+                                    child: Text(
+                                      questoes[indice]['alternativas'][i],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      const SizedBox(height: 30),
+
+                      Row(
+                        mainAxisAlignment:
+                            MainAxisAlignment.spaceAround,
+                        children: [
+                          ElevatedButton(
+                            onPressed: indice > 0
+                                ? () => setState(() {
+                                      indice--;
+                                    })
+                                : null,
+                            child: const Text("Anterior"),
+                          ),
+                          ElevatedButton(
+                            onPressed: respondeu
+                                ? proxima
+                                : null,
+                            child: const Text("Próxima"),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                q['pergunta'],
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Palette.primary),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            ...List.generate(q['alternativas'].length, (i) {
-              return Container(
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 6,
-                ),
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: corBotao(i),
-                  ),
-                  onPressed: () => responder(i),
-                  child: Text(q['alternativas'][i]),
-                ),
-              );
-            }),
-
-            const SizedBox(height: 20),
-
-            if (respondeu)
-              ElevatedButton(
-                onPressed: proxima,
-                child: const Text("Próxima"),
-              ),
-
-            const SizedBox(height: 20),
-          ],
-        ),
-      ),
     );
   }
 }
