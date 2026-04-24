@@ -24,13 +24,16 @@ class _SplashState extends State<Splash>
       duration: const Duration(seconds: 2),
     );
 
-    animation = Tween<double>(begin: -200, end: 0).animate(
-      CurvedAnimation(parent: controller, curve: Curves.easeOut),
+    animation = Tween<double>(begin: -250, end: 0).animate(
+      CurvedAnimation(
+        parent: controller,
+        curve: Curves.bounceOut,
+      ),
     );
 
     controller.forward();
 
-    // ⏱️ Ir para Home
+
     Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
@@ -53,7 +56,7 @@ class _SplashState extends State<Splash>
         builder: (context, child) {
           return Center(
             child: Transform.translate(
-              offset: Offset(0, animation.value), // 👇 movimento vertical
+              offset: Offset(0, animation.value),
               child: child,
             ),
           );
